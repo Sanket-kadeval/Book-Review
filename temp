@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>GoodBook</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="GoodBook" name="keywords">
+        <meta content="GoodBook" name="description">
+
+        <!-- Favicon -->
+        <link href="img/favicon.ico" rel="icon">
+
+        <!-- Google Fonts -->
+        
+        <link href='https://fonts.googleapis.com/css?family=Almarai' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Akronim' rel='stylesheet'>
+
+        <!-- CSS Libraries -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link href="lib/slick/slick.css" rel="stylesheet">
+        <link href="lib/slick/slick-theme.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+
+    <body style=" font-family: 'Almarai';">
+       
+<!------------header start----------> 
+        <?php
+            include 'header.php';
+        ?>
+
+        <div class="container">
+            <div class="row">
+
+                <?php
+                    include 'config.php';
+
+                    $sql = "select * from book_detail order by book_id";
+                    
+                    
+                    $result = mysqli_query($db , $sql);
+
+                    if(mysqli_num_rows($result) > 0){
+                       
+                ?>
+
+                <div class="col-md-8">
+`                   <div class="mainbook bg-light p-2">
+                        <?php  while($row = mysqli_fetch_assoc($result)){ ?>            
+                        <div class="img col-md-6">
+                            <h3><?php echo $row['book_name'];  ?></h3>
+                            <img src="<?php echo $row['img']; ?>"  class="img-fluid">
+                        </div>
+                        <div class="discription pt-3 pl-3" style="font-size: 17px;">
+                            <h5 >description</h5>
+                            <p ><?php echo $row['book_description'];  ?> </p>
+                            <p class="text-right">-  <?php echo $row['book_authod'];  ?></p>                    
+                        </div>
+                        <hr>
+                        <?php
+                            }
+                        }
+                        ?>
+                    </div>
+                    
+                    
+                </div>
+               
+
+                <div class="col-md-4" >
+`                   <div class="related-book bg-light p-2">
+                        <h3 class="text-center pb-3">Related Book</h3>
+                        <div class="row justify-content-center">
+                            <div class="img col-md-7">
+                                <img src="img/book6.jpg" class="img-fluid">
+                                <p class="text-center">book name</p>
+                            </div>
+                            <div class="img col-md-7">
+                                <img src="img/book6.jpg" class="img-fluid">
+                                <p class="text-center">book name</p>
+                            </div>
+                            <div class="img col-md-7 ">
+                                <img src="img/book6.jpg" class="img-fluid">
+                                <p class="text-center">book name</p>
+                            </div>
+                            <div class="img col-md-7">
+                                <img src="img/book6.jpg" class="img-fluid">
+                                <p class="text-center">book name</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+              
+            </div>
+        </div>
+
+<!----------------------------------footer start------------------->
+        <?php  include 'footer.php';   ?>
+<!----------------------------------footer end---------------------->
+    </body>
+</html>

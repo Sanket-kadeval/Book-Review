@@ -1,0 +1,22 @@
+.header{
+	
+	background-color:#FF6F61 ;
+	padding:10px;
+	margin-bottom:20px;	
+	color: white;
+}
+
+.login-header{
+	font-size:20px;
+	font-weight:bold;
+
+}
+input[type='submit']:hover{
+	background-color:#FF6F61;
+	color:white;
+}
+
+.form-control{
+	background: transparent;
+	
+}
